@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: groundtruth-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: AI_MODEL
+        value: gemma2-9b-it
+      - key: AI_API_BASE_URL
+        value: https://api.groq.com/openai/v1
+      - key: AI_API_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
